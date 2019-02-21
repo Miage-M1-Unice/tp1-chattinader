@@ -4,7 +4,7 @@ import java.util.*;
 import java.io.File;
 import java.io.FilenameFilter;
 
-public class Main extends ListerFiltrerExterne {
+public class Lister extends ListerFiltrerExterne {
     // --------------------------------------------Lister--------------------------------------------------------------
     private void lister (String path) {
         File file = new File(path);
@@ -59,7 +59,7 @@ public class Main extends ListerFiltrerExterne {
 // --------------------------------------------main--------------------------------------------------------------------
     public static void main (String[] args){
         // Initialisation
-        Main m = new Main();
+        Lister l = new Lister();
         ListerFiltrerExterne e = new ListerFiltrerExterne();
         Scanner scInt = new Scanner(System.in);
         Scanner scString = new Scanner(System.in);
@@ -81,13 +81,13 @@ public class Main extends ListerFiltrerExterne {
         // Appel de la méthode en fonction du choix saisi
         switch (choix) {
             case 1:
-                m.lister(".");
+                l.lister(".");
                 break;
             case 2: {
                 // Initialisation de l'extension
                 System.out.print("Extension des fichier à afficher (.txt, .java, ..): ");
                 String ext = scString.nextLine();
-                m.listerFilter(".", ext);
+                l.listerFilter(".", ext);
                 break;
             }
             case 3:{
@@ -98,8 +98,10 @@ public class Main extends ListerFiltrerExterne {
                 break;
             }
             case 4: {
+                // Initialisation de l'extension
                 System.out.print("Extension des fichier à afficher (.txt, .java, ..): ");
                 String ext = scString.nextLine();
+                // class anonyme qui appelle la méthode listerFiltrerExterne de la classe ListerFiltrerExterne
                 ListerFiltrerExterne a = new ListerFiltrerExterne(){
                     public void listerAnonyme () {
                         ListerFiltrerExterne ea = new ListerFiltrerExterne();
