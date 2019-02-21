@@ -68,14 +68,15 @@ public class Main extends ListerFiltrerExterne {
         System.out.println("Choisissez la méthode de recherche: ");
         System.out.println("1- List Files");
         System.out.println("2- List Files FilenameFilter");
-        System.out.println("2- List Files FilenameFilter classe extèrne: ");
+        System.out.println("3- List Files FilenameFilter classe extèrne: ");
+        System.out.println("4- List Files FilenameFilter classe anonyme: ");
 
         // Test sur le choix saisi
         int choix = 0;
         do {
             System.out.print("Votre choix: ");
             choix = scInt.nextInt();
-        } while (choix <1  || choix > 3);
+        } while (choix <1  || choix > 4);
 
         // Appel de la méthode en fonction du choix saisi
         switch (choix) {
@@ -96,9 +97,17 @@ public class Main extends ListerFiltrerExterne {
                 e.listerFiltrerExterne(".", ext);
                 break;
             }
-            default:
-                System.out.println("Choix invalide! Réessayez");
-                break;
+            case 4: {
+                System.out.print("Extension des fichier à afficher (.txt, .java, ..): ");
+                String ext = scString.nextLine();
+                ListerFiltrerExterne a = new ListerFiltrerExterne(){
+                    public void listerAnonyme () {
+                        ListerFiltrerExterne ea = new ListerFiltrerExterne();
+                        ea.listerFiltrerExterne(".", ext);
+                    }
+                };
+                ((ListerFiltrerExterne) a).listerAnonyme();
+            }
         }
     }
 }

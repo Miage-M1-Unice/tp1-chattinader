@@ -38,4 +38,7 @@ public class ListerFiltrerExterne {
             }
         }
     }
+
+    protected void listerAnonyme() {
+    }
 }
