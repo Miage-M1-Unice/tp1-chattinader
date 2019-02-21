@@ -4,7 +4,7 @@ import java.util.*;
 import java.io.File;
 import java.io.FilenameFilter;
 
-public class Main {
+public class Main extends ListerFiltrerExterne {
     // --------------------------------------------Lister--------------------------------------------------------------
     private void lister (String path) {
         File file = new File(path);
@@ -56,11 +56,11 @@ public class Main {
         }
     }
 
-
 // --------------------------------------------main--------------------------------------------------------------------
     public static void main (String[] args){
         // Initialisation
         Main m = new Main();
+        ListerFiltrerExterne e = new ListerFiltrerExterne();
         Scanner scInt = new Scanner(System.in);
         Scanner scString = new Scanner(System.in);
 
@@ -68,22 +68,37 @@ public class Main {
         System.out.println("Choisissez la méthode de recherche: ");
         System.out.println("1- List Files");
         System.out.println("2- List Files FilenameFilter");
+        System.out.println("2- List Files FilenameFilter classe extèrne: ");
 
         // Test sur le choix saisi
         int choix = 0;
         do {
             System.out.print("Votre choix: ");
             choix = scInt.nextInt();
-        } while (choix != 1 && choix != 2);
+        } while (choix <1  || choix > 3);
 
         // Appel de la méthode en fonction du choix saisi
-        if (choix == 1) {
-            m.lister(".");
-        } else if (choix == 2) {
-            // Initialisation de l'extension
-            System.out.print("Extension des fichier à afficher (.txt, .java, ..): ");
-            String ext = scString.nextLine();
-            m.listerFilter(".", ext);
+        switch (choix) {
+            case 1:
+                m.lister(".");
+                break;
+            case 2: {
+                // Initialisation de l'extension
+                System.out.print("Extension des fichier à afficher (.txt, .java, ..): ");
+                String ext = scString.nextLine();
+                m.listerFilter(".", ext);
+                break;
+            }
+            case 3:{
+                // Initialisation de l'extension
+                System.out.print("Extension des fichier à afficher (.txt, .java, ..): ");
+                String ext = scString.nextLine();
+                e.listerFiltrerExterne(".", ext);
+                break;
+            }
+            default:
+                System.out.println("Choix invalide! Réessayez");
+                break;
         }
     }
 }
