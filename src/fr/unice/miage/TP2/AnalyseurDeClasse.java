@@ -62,4 +62,9 @@ public class AnalyseurDeClasse {
             System.out.println(cl.getDeclaredMethods()[i]);
         }
     }
+
+    public String litChaineAuClavier() throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        return br.readLine();
+    }
 }
