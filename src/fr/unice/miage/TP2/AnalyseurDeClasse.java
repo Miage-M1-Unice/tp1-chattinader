@@ -43,6 +43,9 @@ public class AnalyseurDeClasse {
 
     public void afficheAttributs(Class cl) {
         System.out.println("// Champs ");
+        for(int i = 0; i < cl.getFields().length ; i++){
+            System.out.println(cl.getFields()[i]);
+        }
     }
 
     public void afficheConstructeurs(Class cl) {
