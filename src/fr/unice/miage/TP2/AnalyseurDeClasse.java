@@ -58,5 +58,8 @@ public class AnalyseurDeClasse {
 
     public void afficheMethodes(Class cl) {
         System.out.println("// Méthodes");
+        for(int i = 0; i < cl.getDeclaredMethods().length ; i++){
+            System.out.println(cl.getDeclaredMethods()[i]);
+        }
     }
 }
