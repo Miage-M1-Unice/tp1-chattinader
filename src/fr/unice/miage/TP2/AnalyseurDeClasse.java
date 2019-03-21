@@ -6,10 +6,23 @@ import java.io.*;
 public class AnalyseurDeClasse {
     public void analyseClasse(String nomClasse) throws ClassNotFoundException {
         // Récupération d'un objet de type Class correspondant au nom passé en paramètres
+        Class cl = getClasse(nomClasse);
+
+        afficheEnTeteClasse(cl);
+
         System.out.println();
+        afficheAttributs(cl);
+
+        System.out.println();
+        afficheConstructeurs(cl);
+
+        System.out.println();
+        afficheMethodes(cl);
+
         // L'accolade fermante de fin de classe !
         System.out.println("}");
     }
+
 
     /** Retourne la classe dont le nom est passé en paramètre */
     public Class getClasse(String nomClasse) throws ClassNotFoundException {
