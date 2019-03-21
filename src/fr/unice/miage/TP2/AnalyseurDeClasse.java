@@ -50,6 +50,9 @@ public class AnalyseurDeClasse {
 
     public void afficheConstructeurs(Class cl) {
         System.out.println("// Constructeurs");
+        for(int i = 0; i < cl.getConstructors().length ; i++){
+            System.out.println(cl.getConstructors()[i]);
+        }
     }
 
 
