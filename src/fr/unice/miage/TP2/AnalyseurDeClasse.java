@@ -19,6 +19,26 @@ public class AnalyseurDeClasse {
     /** Cette méthode affiche par ex "public class Toto extends Tata implements Titi, Tutu {" */
     public void afficheEnTeteClasse(Class cl) {
         //  Affichage du modifier et du nom de la classe
+        System.out.print(Modifier.toString(cl.getModifiers()) + " ");
+        System.out.print(cl.getName() + " ");
+
+        // Récupération de la superclasse si elle existe (null si cl est le type Object)
+        // Class supercl = // CODE A ECRIRE
+        if(cl.getSuperclass() != null && cl.getSuperclass().getName() != "java.lang.Object"){
+            Class supercl = cl.getSuperclass();
+            System.out.print("extends " + supercl.getName());
+        }
+
+        // Affichage des interfaces que la classe implemente
+        if(cl.getInterfaces().length > 0){
+            System.out.print("implements ");
+            for(int i = 0; i < cl.getInterfaces().length; i++){
+                System.out.print(cl.getInterfaces()[i]);
+            }
+        }
+
+        // Enfin, l'accolade ouvrante !
+        System.out.print(" {\n");
     }
 
     public void afficheAttributs(Class cl) {
